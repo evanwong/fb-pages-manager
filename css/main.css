@@ -1,0 +1,9 @@
+.fixed-panel {
+    min-height: 120px;
+    max-height: 120px;
+    overflow-y: scroll;
+}
+
+.post-actions {
+	float: right;
+}
