@@ -1,0 +1,22 @@
+{
+  "name": "pages-manager",
+  "version": "0.1.0",
+  "authors": [
+    "Evan Wong <evan@evanwong.io>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "startbootstrap-sb-admin-2": "~1.0.5",
+    "angular": "1.3.14",
+    "ng-facebook": "~0.1.6",
+    "eonasdan-bootstrap-datetimepicker": "~4.0.0"
+  }
+}
