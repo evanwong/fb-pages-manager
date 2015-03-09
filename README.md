@@ -1,2 +1,2 @@
 # fb-pages-manager
-A static HTML5 pages manager for Facebook
+A static HTML5 Facebook pages-manager
