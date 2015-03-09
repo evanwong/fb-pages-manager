@@ -7,3 +7,14 @@
 .post-actions {
 	float: right;
 }
+
+.newpost-thumbnail {		
+      line-height: 20px; 
+      margin-bottom: 5px;
+      text-align: center;
+}
+
+.newpost-thumbnail > img {	
+      max-width: 200px; 
+      max-height: 150px; 
+}
