@@ -141,15 +141,20 @@ pagesManagerApp.controller('DashboardCtrl', function($scope, $facebook) {
                 access_token: $scope.accessToken,
                 is_published: true
             }).then(
-                function(response) {
+                function(response) {                    
                     if (response.success) {
-                        for (var i = 0; i < $scope.promotablePosts.length; i++) {
-                            if ($scope.promotablePosts[i].id == $scope.toBePublishPostId) {
-                                $scope.promotablePosts[i].is_published = true;
-                                delete $scope.promotablePosts[i].scheduled_publish_time;
-                                break;
+                        $scope.promotablePosts = $.grep($scope.promotablePosts, function(post) {
+                            return post.id != $scope.toBePublishPostId;
+                        });
+
+                        $facebook.api("/" + $scope.toBePublishPostId).then(function(response) {
+                            if (response.id) {                                
+                                response.post_impressions = 0;
+                                response.post_engaged_users = 0;
+                                response.is_published = true;
+                                $scope.promotablePosts.splice(0, 0, response);
                             }
-                        }
+                        });
                     } else {
                         toggleActions($scope.toBePublishPostId);
                     }
