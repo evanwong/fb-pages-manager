@@ -388,7 +388,12 @@ pagesManagerApp.controller('DashboardCtrl', function($scope, $facebook) {
     function toggleActions(pid) {
         if (pid) {
             $('.actions-' + pid).toggle();
-            $('.post-progress-' + pid).toggle();
+            if ($('.post-progress-' + pid).is(':visible')) {
+                $('.post-progress-' + pid).addClass("hidden");    
+            } else {
+                $('.post-progress-' + pid).removeClass("hidden");
+            }
+            
         }
     }
 
