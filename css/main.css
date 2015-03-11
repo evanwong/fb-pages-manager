@@ -8,6 +8,33 @@
 	float: right;
 }
 
+div#page-loading {
+	 position: fixed; 
+	 left: 49%; 
+	 bottom: 40%;
+}
+
+.newpost-link {
+	margin-bottom: 5px;
+}
+
+.newpost-link i {
+	vertical-align: top;
+}
+
+.newpost-photo img {
+	display: inline;
+}
+
+.newpost-photo i {
+	vertical-align: top;
+}
+
+.newpost-photo input {
+	visibility: hidden; 
+	position: absolute;
+}
+
 .newpost-thumbnail {		
       line-height: 20px; 
       margin-bottom: 5px;
@@ -22,4 +49,49 @@
 .panel-body img {
 	max-width: 200px;
 	max-height: 150px;
+}
+
+.prewrap {
+	white-space: pre-line;
+}
+
+.right {
+	float: right;
+}
+
+.hidden {
+	display: none;
+}
+
+.zero-margin-bottom {
+	margin-bottom: 0;
+}
+
+.left-right-margin-auto {
+	margin-left: auto; 
+	margin-right: auto
+}
+
+.welcome-msg {
+	text-align: center; 
+	font-weight: bold; 
+	margin-top: 10px;
+}
+
+.login-btn {
+	text-align: center; 
+	margin-top: 5px; 
+	margin-bottom: 10px;
+}
+
+.red-font {
+	color: red;
+}
+
+.align-center {
+	text-align: center;
+}
+
+.small-right-margin {
+	margin-right: 1em;
 }

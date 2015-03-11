@@ -30,8 +30,8 @@ var pagesManagerApp = angular.module('pagesManagerApp', ['ngFacebook', 'infinite
             firstScriptElement.parentNode.insertBefore(facebookJS, firstScriptElement);
 
             setTimeout(function() {
-                $('#page-loading').hide();
-                $('#wrapper').show();
+                $('#page-loading').addClass('hidden');
+                $('#wrapper').removeClass('hidden');
             }, 500);
         }());
     });
