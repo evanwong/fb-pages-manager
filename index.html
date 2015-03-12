@@ -260,7 +260,7 @@
         
         
         <div class="row">
-          <div class="col-lg-3 col-md-6">
+          <div class="col-lg-4 col-md-6">
             <div class="panel panel-primary">
               <div class="panel-heading">
                 <div class="row">
@@ -280,7 +280,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6">
+          <div class="col-lg-4 col-md-6">
             <div class="panel panel-green">
               <div class="panel-heading">
                 <div class="row">
@@ -300,7 +300,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6">
+          <div class="col-lg-4 col-md-6">
             <div class="panel panel-yellow">
               <div class="panel-heading">
                 <div class="row">
@@ -320,7 +320,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6">
+          <div class="col-lg-3 col-md-6 hidden">
             <div class="panel panel-red">
               <div class="panel-heading">
                 <div class="row">
@@ -398,7 +398,7 @@
                   </div>
                   <div ng-switch-when="photo">
                     <div class="prewrap" ng-if="post.message">{{post.message}}</div>
-                    <div class="prewrap" ng-if="post.story">{{post.story}}</div>
+                    <div class="prewrap" ng-if="post.story"><a href="{{post.link}}" target="_blank">{{post.story}}</a></div>
                     <a href="{{post.link}}" target="_blank">    
                     	<img ng-src="{{post.picture}}">
                     </a>
@@ -430,7 +430,7 @@
                       </i>
                       {{post.post_impressions}}
                     </span>
-                    <span data-toggle="tooltip" title="engaged">
+                    <span data-toggle="tooltip" title="engaged" class="hidden">
                       <i class="fa fa-plug fa-lg">
                       </i>
                       {{post.post_engaged_users}}
