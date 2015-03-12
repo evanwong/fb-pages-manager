@@ -429,7 +429,7 @@ pagesManagerApp.controller('DashboardCtrl', function($scope, $facebook) {
             function(response) {
                 $scope.selectedPage = response;
             });
-        $facebook.api("/" + page.id + "/insights/page_impressions,page_engaged_users", {
+        $facebook.api("/" + page.id + "/insights/page_impressions,page_engaged_users,page_impressions_unique", {
             access_token: page.access_token
         }).then(function(response) {
 
@@ -440,6 +440,8 @@ pagesManagerApp.controller('DashboardCtrl', function($scope, $facebook) {
                     $scope.page_impressions_28d = data[i].values[data[i].values.length - 1].value;
                 } else if (data[i].name == 'page_engaged_users' && data[i].period == 'days_28') {
                     $scope.page_engaged_users_28d = data[i].values[data[i].values.length - 1].value;
+                } else if (data[i].name == 'page_impressions_unique' && data[i].period == 'days_28') {
+                    $scope.page_impressions_unique_28d = data[i].values[data[i].values.length - 1].value;
                 }
             }
             buildPromotablePosts(page.id, {
@@ -464,7 +466,7 @@ pagesManagerApp.controller('DashboardCtrl', function($scope, $facebook) {
                 for (var i = 0; i < postsResponseData.length; i++) {
                     batch.push({
                         method: 'GET',
-                        relative_url: '/' + postsResponseData[i].id + '/insights/post_impressions,post_engaged_users?include_headers=false'
+                        relative_url: '/' + postsResponseData[i].id + '/insights/post_impressions,post_engaged_users,post_impressions_unique?include_headers=false'
                     });
                 }
                 $scope.loadingPosts = false;
@@ -482,7 +484,8 @@ pagesManagerApp.controller('DashboardCtrl', function($scope, $facebook) {
                             if (response[i].code == 200) {
                                 var body = JSON.parse(response[i].body);
                                 $scope.promotablePosts[len - pos].post_impressions = body.data[0].values[0].value;
-                                $scope.promotablePosts[len - pos++].post_engaged_users = body.data[1].values[0].value;
+                                $scope.promotablePosts[len - pos].post_engaged_users = body.data[1].values[0].value;
+                                $scope.promotablePosts[len - pos++].post_impressions_unique = body.data[2].values[0].value;
                             }
                         }
                     }

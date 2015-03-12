@@ -260,7 +260,7 @@
         
         
         <div class="row">
-          <div class="col-lg-4 col-md-6">
+          <div class="col-lg-3 col-md-6">
             <div class="panel panel-primary">
               <div class="panel-heading">
                 <div class="row">
@@ -280,7 +280,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6">
+          <div class="col-lg-3 col-md-6">
             <div class="panel panel-green">
               <div class="panel-heading">
                 <div class="row">
@@ -300,7 +300,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6">
+          <div class="col-lg-3 col-md-6">
             <div class="panel panel-yellow">
               <div class="panel-heading">
                 <div class="row">
@@ -313,27 +313,27 @@
                       {{page_impressions_28d}}
                     </div>
                     <div>
-                      Impressions (28d)
+                      Views (28d)
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6 hidden">
+          <div class="col-lg-3 col-md-6">
             <div class="panel panel-red">
               <div class="panel-heading">
                 <div class="row">
                   <div class="col-xs-3">
-                    <i class="fa fa-plug fa-5x">
+                    <i class="fa fa-user fa-5x">
                     </i>
                   </div>
                   <div class="col-xs-9 text-right">
                     <div class="huge">
-                      {{page_engaged_users_28d}}
+                      {{page_impressions_unique_28d}}
                     </div>
                     <div>
-                      Engaged (28d)
+                      Unique Views (28d)
                     </div>
                   </div>
                 </div>
@@ -425,15 +425,15 @@
                   </span>
                   
                   <span class="right">
-                    <span data-toggle="tooltip" title="views">
+                    <span data-toggle="tooltip" title="views" class="small-right-margin">
                       <i class="fa fa-eye fa-lg">
                       </i>
                       {{post.post_impressions}}
                     </span>
-                    <span data-toggle="tooltip" title="engaged" class="hidden">
-                      <i class="fa fa-plug fa-lg">
+                    <span data-toggle="tooltip" title="unique views">
+                      <i class="fa fa-user fa-lg">
                       </i>
-                      {{post.post_engaged_users}}
+                      {{post.post_impressions_unique}}
                     </span>
                   </span>
                 </div>
