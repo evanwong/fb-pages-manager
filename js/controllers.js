@@ -302,7 +302,8 @@ pagesManagerApp.controller('DashboardCtrl', function($scope, $facebook) {
                             var response = JSON.parse(xhr.responseText);
                             if (response.post_id || response.id) {
                                 console.log('Posted successfully!');
-                                var isPublished = $scope.newpost.isPublished;
+                                var isPublished = params.published;
+                                var scheduledPublishTime = params.scheduled_publish_time;
                                 resetNewPost();
                                 var postId = response.post_id;
                                 if (!postId) {
@@ -312,6 +313,9 @@ pagesManagerApp.controller('DashboardCtrl', function($scope, $facebook) {
                                     if (response.id) {
                                         if (isPublished) {
                                             response.is_published = true;
+                                        }
+                                        if (scheduledPublishTime) {
+                                            response.scheduled_publish_time = scheduledPublishTime;
                                         }
                                         response.post_impressions = 0;
                                         response.post_engaged_users = 0;
