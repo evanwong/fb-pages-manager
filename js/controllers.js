@@ -413,7 +413,16 @@ pagesManagerApp.controller('DashboardCtrl', function($scope, $facebook) {
     function buildPageList() {
         $facebook.api("/me/accounts?limit=50").then(
             function(response) {
-                $scope.meAccounts = response.data;
+                $scope.meAccounts = response.data.sort(function (a, b) {
+                    if (a.name > b.name) {
+                        return 1;
+                    }
+                    if (a.name < b.name) {
+                        return -1;
+                    }
+                    // a must be equal to b
+                    return 0;
+                });
                 if ($scope.meAccounts.length > 0) {
                     buildPage($scope.meAccounts[0]);
                 }
@@ -483,9 +492,11 @@ pagesManagerApp.controller('DashboardCtrl', function($scope, $facebook) {
                         for (var i = response.length - 1; i >= 0; i--) {
                             if (response[i].code == 200) {
                                 var body = JSON.parse(response[i].body);
-                                $scope.promotablePosts[len - pos].post_impressions = body.data[0].values[0].value;
-                                $scope.promotablePosts[len - pos].post_engaged_users = body.data[1].values[0].value;
-                                $scope.promotablePosts[len - pos++].post_impressions_unique = body.data[2].values[0].value;
+                                if (body && body.data.length == 3) {
+                                    $scope.promotablePosts[len - pos].post_impressions = body.data[0].values[0].value;
+                                    $scope.promotablePosts[len - pos].post_engaged_users = body.data[1].values[0].value;
+                                    $scope.promotablePosts[len - pos++].post_impressions_unique = body.data[2].values[0].value;
+                                }
                             }
                         }
                     }
