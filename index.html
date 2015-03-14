@@ -215,14 +215,15 @@
                   <label class="btn btn-info active" aria-pressed="true" ng-click="newpost.extra = 'status'">
                     <input class="active" name="newpost-extra" type="radio" value="status" autocomplete="off">
                     Status
-                  </label>
-                  Post As
-                    <select ng-model="selectedToken.postAs" ng-change="check()"
-                      ng-options="availableToken.name for availableToken in availableTokens">
-                    </select>                                    
+                  </label>                                    
                 </div>
                 <div class="right">
-                  <div class="btn-group">
+                  <div class="input-group left small-right-margin">
+                    <select class="form-control" ng-model="selectedToken.postAs"
+                      ng-options="availableToken.name for availableToken in availableTokens">
+                    </select>
+                  </div>
+                  <div class="btn-group left">
                     <button type="button" class="btn btn-primary newpost-input" ng-click="postNew()">
                       Post
                     </button>
@@ -626,8 +627,7 @@
       $(function() {
         $("body").tooltip({
           selector: '[data-toggle=tooltip]'
-        }
-                         );
+        });
       }
        );
     </script>

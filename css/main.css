@@ -59,6 +59,10 @@ div#page-loading {
 	float: right;
 }
 
+.left {
+	float: left;
+}
+
 .hidden {
 	display: none;
 }
