@@ -216,6 +216,10 @@
                     <input class="active" name="newpost-extra" type="radio" value="status" autocomplete="off">
                     Status
                   </label>
+                  Post As
+                    <select ng-model="selectedToken.postAs" ng-change="check()"
+                      ng-options="availableToken.name for availableToken in availableTokens">
+                    </select>                                    
                 </div>
                 <div class="right">
                   <div class="btn-group">

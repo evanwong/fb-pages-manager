@@ -60,6 +60,10 @@ pagesManagerApp.controller('DashboardCtrl', function($scope, $facebook) {
     });
 
     $scope.uploader = {};
+    $scope.availableTokens = [];    
+    
+    $scope.selectedToken = {};
+
     $scope.upload = function() {
         $scope.uploader.flow.upload();
     }
@@ -71,12 +75,16 @@ pagesManagerApp.controller('DashboardCtrl', function($scope, $facebook) {
         if (response.status === 'connected') {
             // Logged into your app and Facebook.
             $scope.loggedIn = true;
+            console.log(response.authResponse.accessToken);
+            $scope.myToken = response.authResponse.accessToken;
             buildMe();
         } else if (response.status === 'not_authorized') {
             // The person is logged into Facebook, but not your app.            
             $scope.loggedIn = false;
+            $scope.myToken = null;
         } else {
             $scope.loggedIn = false;
+            $scope.myToken = null;
             // The person is not logged into Facebook, so we're not sure if
             // they are logged into this app or not.
         }
@@ -252,9 +260,12 @@ pagesManagerApp.controller('DashboardCtrl', function($scope, $facebook) {
     }
 
     function post() {
+
+        console.log("Post as: " + $scope.selectedToken.postAs.name);
         var params = {
-            access_token: $scope.accessToken
+            access_token: $scope.selectedToken.postAs.accessToken
         };
+
         if ($scope.newpost.message) {
             params.message = $scope.newpost.message;
         }
@@ -410,7 +421,7 @@ pagesManagerApp.controller('DashboardCtrl', function($scope, $facebook) {
         $facebook.api("/me").then(
             function(response) {
                 $scope.loggedIn = true;
-                $scope.me = response;
+                $scope.me = response;                
             });
     }
 
@@ -435,7 +446,10 @@ pagesManagerApp.controller('DashboardCtrl', function($scope, $facebook) {
 
     function buildPage(page) {
         cleanup();
+        $scope.availableTokens.push({name: $scope.me.name, accessToken: $scope.myToken});
+        $scope.selectedToken.postAs = $scope.availableTokens[0];
         $scope.accessToken = page.access_token;
+        $scope.availableTokens.push({name: page.name, accessToken: page.access_token});
         $facebook.api("/" + page.id, {
             access_token: page.access_token
         }).then(
@@ -526,5 +540,6 @@ pagesManagerApp.controller('DashboardCtrl', function($scope, $facebook) {
         $scope.promotablePosts = null;
         $scope.loadingPosts = false;
         $scope.hasMorePosts = true;
+        $scope.availableTokens = [];
     }
 });
